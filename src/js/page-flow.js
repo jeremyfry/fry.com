@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	}
 	var dragonTimeout;
 	var dragonSprite = new AnimatedSprite({
-		canvas: document.querySelector("#dragonSprite"),
+		canvas: document.querySelector("#dragon-sprite"),
 		spriteSheet: "/images/sprite.png",
 		frames: {
 			"up": [
@@ -27,8 +27,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			headeroffset: 350,
 			aboutoffset: windowHeight(1.4),
 			fatheroffset: windowHeight(2.7),
-			developeroffset: windowHeight(4),
-			servicesoffset: windowHeight(6)
+			developeroffset: windowHeight(8),
+			servicesoffset: windowHeight(10)
 		},
 		keyframe: function(element, name, direction) {
 			dragonSprite.setDirection(direction);

@@ -11,6 +11,7 @@ $bodyFont: 'IM Fell Great Primer', serif;
 }
 
 @import url(http://fonts.googleapis.com/css?family=IM+Fell+Great+Primer:400,400italic);
+@import url(http://fonts.googleapis.com/css?family=VT323);
 
 @font-face {
     font-family: 'DeutscheZierschriftRegular';
@@ -324,7 +325,7 @@ section{
 			height: 100%;
 		}
 
-		#dragonSprite{
+		#dragon-sprite{
 			position: absolute;
 			left: 50%;
 			transform: translateX(-50%);
@@ -339,49 +340,46 @@ section{
 			z-index: 22;
 		}
 
-		figure{
-			display: inline-block;
-			width: 140px;
+		.text-box{
+			opacity: 0;
+			width: 80%;
+			padding: 10px;
+			background-color: blue;
+			border: 5px solid white;
+			border-radius: 10px;
+			position: fixed;
+			top: 90%;
+			left: 50%;
+			transform: translateY(-100%) translateX(-50%);
+			color: white;
+			font-family: 'VT323';
+			font-size: 25px;
+			z-index: 24;
+		}
+
+		.tree-tile{
+			height: 600%;
+			background: url(/images/trees.png) top left repeat-y;
 			position: absolute;
-			left: 10px;
-			overflow: hidden;
-			border-radius: 7px;
-			background-color: #EEE;
-			border: 1px solid #000;
-			transform: rotateZ(-6deg) translateX(-50%);
-			transition: transform .5s;
-			transition-delay: .25s;
-			cursor: pointer;
+			top: 0;
+			width: 320px;
+			left: -175px;
+			margin-top: 275px;
+			z-index: 23;
 
-			&:nth-child(2n){
-				right: 10px;
+			&.right{
+				right: -175px;
 				left: auto;
-				top: 60%;
-				transform: rotateZ(6deg) translateX(50%);
-			}
-			&:nth-child(3){
-				top: 90%;
-			}
-			&:nth-child(4){
-				top: 120%;
-			}
-			&:nth-child(5){
-				top: 150%;
-			}
-			&:nth-child(6){
-				top: 180%;
-			}
-			&:nth-child(7){
-				top: 210%;
 			}
 
-			&:hover{
-				transition-delay: 0;
-				transform: translateX(0%);
-			}
-
-			img{
-				width: 100%;
+			&:before{
+				content: "";
+				display: block;
+				width: 320px;
+				height: 81px;
+				position: absolute;
+				top: -81px;
+				background: url(/images/tree-tops.png) top left no-repeat;
 			}
 		}
 	}
