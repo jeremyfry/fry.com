@@ -7,12 +7,28 @@ function extend(a, b){
 }
 
 window.requestAnimFrame = (function(){
-  return  window.requestAnimationFrame       ||
-          window.webkitRequestAnimationFrame ||
-          window.mozRequestAnimationFrame    ||
-          function( callback ){
-            window.setTimeout(callback, 1000 / 60);
-          };
+	return  window.requestAnimationFrame       ||
+		window.webkitRequestAnimationFrame ||
+		window.mozRequestAnimationFrame    ||
+		function( callback ){
+			window.setTimeout(callback, 1000 / 60);
+		};
 })();
 
 window.qs = document.querySelector.bind(document);
+
+window.toggleClass = function(node, className){
+	if (node.classList) {
+		node.classList.toggle(className);
+	} else {
+		var classes = node.className.split(' ');
+		var existingIndex = classes.indexOf(className);
+
+	if (existingIndex >= 0)
+		classes.splice(existingIndex, 1);
+	else
+		classes.push(className);
+
+		node.className = classes.join(' ');
+	}
+}

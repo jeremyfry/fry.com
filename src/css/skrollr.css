@@ -182,7 +182,7 @@
 	}
 
 	#cave, .tree-tile {
-		-skrollr-animation-name:cave;	
+		-skrollr-animation-name:cave;
 	}
 
 	@-skrollr-keyframes cave {
@@ -212,7 +212,7 @@
 	}
 
 	#dragon-sprite {
-		-skrollr-animation-name:dragonSprite;	
+		-skrollr-animation-name:dragonSprite;
 	}
 
 	@-skrollr-keyframes dragonSprite {
@@ -344,7 +344,7 @@
 *********************/
 
 	#services {
-		-skrollr-animation-name:servicesSection;	
+		-skrollr-animation-name:servicesSection;
 	}
 
 	@-skrollr-keyframes servicesSection {
