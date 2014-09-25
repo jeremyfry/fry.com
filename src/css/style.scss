@@ -1,400 +1,349 @@
-$bodycolor: #2C220D;
-$backgroundColor: #D5BF99;
-$linkcolor: #6E5723;
+$bodycolor: #2c220d;
+$backgroundColor: #d5bf99;
+$linkcolor: #6e5723;
 $brownborder: #875960;
 $englishFont: 'DeutscheZierschriftRegular', cursive;
 $bodyFont: 'IM Fell Great Primer', serif;
-
-@mixin sprite($url, $y, $x, $repeat, $size:100%){
-	background: url($url) $y $x $repeat;
-	background-size: $size $size;
+@mixin sprite($url, $y, $x, $repeat, $size: 100%){
+    background: url($url) $y $x $repeat;
+    background-size: $size $size;
 }
 
 @import url(http://fonts.googleapis.com/css?family=IM+Fell+Great+Primer:400,400italic);
 @import url(http://fonts.googleapis.com/css?family=VT323);
-
-@font-face {
+@font-face{
     font-family: 'DeutscheZierschriftRegular';
-    src: url('fonts/deutschezierschrift-webfont.eot');
-    src: url('fonts/deutschezierschrift-webfont.eot?iefix') format('eot'),
-         url('fonts/deutschezierschrift-webfont.woff') format('woff'),
-         url('fonts/deutschezierschrift-webfont.ttf') format('truetype'),
-         url('fonts/deutschezierschrift-webfont.svg#webfont7VbnShq8') format('svg');
     font-weight: normal;
     font-style: normal;
+    src: url('fonts/deutschezierschrift-webfont.eot');
+    src: url('fonts/deutschezierschrift-webfont.eot?iefix') format('eot'),
+    url('fonts/deutschezierschrift-webfont.woff') format('woff'),
+    url('fonts/deutschezierschrift-webfont.ttf') format('truetype'),
+    url('fonts/deutschezierschrift-webfont.svg#webfont7VbnShq8') format('svg');
 }
 
-html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary, time, mark, audio, video {
-	margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video{
+    font: inherit;
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+
+    border: 0;
+}
 
 html{
-	background: $backgroundColor;
+    background: $backgroundColor;
 }
 
 body{
-	font-family: $bodyFont;
-	color: $bodycolor;
-	font-size: 18px;
-	overflow-x: hidden;
-	height: 900%;
-
-	a{
-		color:$linkcolor;
-		text-decoration:none;
-		&:hover{
-			color:lighten($linkcolor, 20%);
-		}
-	}
-
-	article a, footer a{
-		text-decoration:underline;
-	}
-
-	strong{
-		font-weight:bold;
-	}
-
-	p+p{
-		margin-top: 10px;
-	}
-
-	h1, h2, h3{
-		font-family: $englishFont;
-	}
-
-	h2{
-		font-size: 28px;
-		margin-bottom: 10px;
-	}
-
-	h3{
-	    margin: 5px 0;
-	}
-
-	h1{
-		color: #333;
-		font-size: 38px;
-		text-align: center;
-		margin-bottom: 15px;
-
-		// &:before{
-		// 	content: "<canvas></canvas>";
-		// 	display: block;
-		// 	position: absolute;
-		// 	width: 110%;
-		// 	margin: -50px -8% 0 -8%;
-		// 	height: 145px;
-		// 	background: url(images/sprite.png) 0 -542px no-repeat;
-		// }
-	}
+    font-family: $bodyFont;
+    font-size: 18px;
+    overflow-x: hidden;
+    height: 900%;
+    color: $bodycolor;
+    a{
+        text-decoration: none;
+        color: $linkcolor;
+        &:hover{
+            color: lighten($linkcolor, 20%);
+        }
+    }
+    article a, footer a{
+        text-decoration: underline;
+    }
+    strong{
+        font-weight: bold;
+    }
+    p + p{
+        margin-top: 10px;
+    }
+    h1, h2, h3{
+        font-family: $englishFont;
+    }
+    h2{
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+    h3{
+        margin: 5px 0;
+    }
+    h1{
+        font-size: 38px;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #333;
+    }
 }
 
 header{
-	width: 100%;
-	height: 340px;
-	font-family: $englishFont;
-	z-index: 20;
-	background: $backgroundColor;
-	position: absolute;;
-
-	*{
-		position:relative;
-	}
-
-	#skyline{
-		background:url(images/skyline.png) bottom center repeat-x;
-		width:100%;
-		height:190px;
-		position: absolute;
-		bottom:-35px;
-		left:0;
-		z-index:4;
-	}
-
-	div#trees, div#treeswrap{
-		background:url(images/trees.png) top center repeat-x;
-		width:100%;
-		height:190px;
-		position: absolute;
-		bottom:-25px;
-		left:0;
-		z-index:5;
-	}
-
-	div#treeswrap{
-		background:transparent;
-	}
-
-	#trees{
-		width:1000px;
-		height:190px;
-		z-index:5;
-		margin:0 auto;
-	}
-
-	#top-animation{
-		position: absolute;
-		top: 0;
-	}
-
-	.overlay1, .overlay2{
-		position:absolute;
-		top:0;
-		left:0;
-		width:100%;
-		height:250px;
-		background:url(images/cloudslayer1.png);
-		z-index:3;
-	}
-
-	.overlay2{
-		background:url(images/cloudslayer2.png);
-	}
-
-	#skycolor{
-		width: 100%;
-		height: 285px;
-		position: absolute;
-		top: 0;
-		left: 0;
-		background: rgba(47, 169, 214, 0.5);
-		z-index: 1;
-	}
-
-	#astral-holder{
-		width:130px;
-		height:275px;
-		left:53%;
-		top:0;
-		position:absolute;
-		z-index:3;
-		overflow:hidden;
-
-		#sun,#moon{
-			width:130px;
-			height:130px;
-			top:30px;
-			position:absolute;
-			@include sprite("images/sprite.png", 0, 0, no-repeat);
-			cursor:pointer;
-		}
-		#sun{
-			background-position:-296px -879px;
-		}
-		#moon{
-			top:320px;
-			background-position:-430px -879px;
-		}
-	}
-
-	.inner{
-		margin:0 auto;
-		position:relative;
-		height:340px;
-	}
-
-	#castle{
-		background: url(images/sprite.png) -340px -110px no-repeat;
-		width: 150px;
-		height: 136px;
-		position: absolute;
-		bottom: 33px;
-		right: 185px;
-		z-index: 6;
-	}
-
-	#monster{
-		position: absolute;
-		bottom: 48px;
-		right: 220px;
-		z-index: 4;
-		width: 44px;
-		height: 50px;
-		background: url(images/sprite.png) -518px -85px no-repeat;
-	}
-
-	div.tinydragon{
-		width:85px;
-		height:72px;
-		position:absolute;
-		bottom:52px;
-		left:65px;
-		background: url(images/sprite.png) -339px -453px no-repeat;
-		z-index: 6;
-	}
+    font-family: $englishFont;
+    position: absolute;
+    z-index: 20;
+    width: 100%;
+    height: 340px;
+    background: $backgroundColor;;
+    *{
+        position: relative;
+    }
+    #skyline{
+        position: absolute;
+        z-index: 4;
+        bottom: -35px;
+        left: 0;
+        width: 100%;
+        height: 190px;
+        background: url(images/skyline.png) bottom center repeat-x;
+    }
+    div#trees, div#treeswrap{
+        position: absolute;
+        z-index: 5;
+        bottom: -25px;
+        left: 0;
+        width: 100%;
+        height: 190px;
+        background: url(images/trees.png) top center repeat-x;
+    }
+    div#treeswrap{
+        background: transparent;
+    }
+    #trees{
+        z-index: 5;
+        width: 1000px;
+        height: 190px;
+        margin: 0 auto;
+    }
+    #top-animation{
+        position: absolute;
+        top: 0;
+    }
+    .overlay1, .overlay2{
+        position: absolute;
+        z-index: 3;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 250px;
+        background: url(images/cloudslayer1.png);
+    }
+    .overlay2{
+        background: url(images/cloudslayer2.png);
+    }
+    #skycolor{
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 285px;
+        background: rgba(47, 169, 214, .5);
+    }
+    #astral-holder{
+        position: absolute;
+        z-index: 3;
+        top: 0;
+        left: 53%;
+        overflow: hidden;
+        width: 130px;
+        height: 275px;
+        #sun, #moon{
+            position: absolute;
+            top: 30px;
+            width: 130px;
+            height: 130px;
+            cursor: pointer;
+            @include sprite('images/sprite.png', 0, 0, no-repeat);
+        }
+        #sun{
+            background-position: -296px -879px;
+        }
+        #moon{
+            top: 320px;
+            background-position: -430px -879px;
+        }
+    }
+    .inner{
+        position: relative;
+        height: 340px;
+        margin: 0 auto;
+    }
+    #castle{
+        position: absolute;
+        z-index: 6;
+        right: 185px;
+        bottom: 33px;
+        width: 150px;
+        height: 136px;
+        background: url(images/sprite.png) -340px -110px no-repeat;
+    }
+    #monster{
+        position: absolute;
+        z-index: 4;
+        right: 220px;
+        bottom: 48px;
+        width: 44px;
+        height: 50px;
+        background: url(images/sprite.png) -518px -85px no-repeat;
+    }
+    div.tinydragon{
+        position: absolute;
+        z-index: 6;
+        bottom: 52px;
+        left: 65px;
+        width: 85px;
+        height: 72px;
+        background: url(images/sprite.png) -339px -453px no-repeat;
+    }
 }
 
 .shield{
-		font-family: $englishFont;
-		position: fixed;
-		top: 30px;
-		left: 0;
-		width: 100%;
-		z-index: 200;
-
-		#shield{
-			@include sprite("images/sprite.png", -5px, -193px, no-repeat, 800px);
-			width: 275px;
-			height: 150px;
-			text-align:center;
-			font-size: 45px;
-			margin: 0 auto;
-
-			.first{
-				font-size: 22px;
-				padding-top: 15px;
-				margin-bottom: -5px;
-				display: block;
-			}
-
-			.last{
-				position: relative;
-				font-size: 45px;
-				text-decoration: none;
-				color: #222;
-			}
-		}
-	}
+    font-family: $englishFont;
+    position: fixed;
+    z-index: 200;
+    top: 30px;
+    left: 0;
+    width: 100%;
+    #shield{
+        font-size: 45px;
+        width: 275px;
+        height: 150px;
+        margin: 0 auto;
+        text-align: center;
+        @include sprite('images/sprite.png', -5px, -193px, no-repeat, 800px);
+        .first{
+            font-size: 22px;
+            display: block;
+            margin-bottom: -5px;
+            padding-top: 15px;
+        }
+        .last{
+            font-size: 45px;
+            position: relative;
+            text-decoration: none;
+            color: #222;
+        }
+    }
+}
 
 section{
-	text-align: center;
-	box-sizing: border-box;
-	padding: 0 7%;
-	height: 100%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	-webkit-transform:translate3d(0,0,0);
-
-	.header-background{
-		position: absolute;
-		left: 0;
-		margin-top: -15px;
-	}
-
-	&#about{
-		padding-top: 180px;
-		background: $backgroundColor;
-		box-shadow: 0px 23px 45px -14px rgba(0,0,0,0.75);
-		z-index: 20;
-	}
-
-	&#father{
-		width: 3000px;
-		padding-left: 1100px;
-		background-color: brown;
-		z-index: 19;
-
-		figure{
-			border-radius: 10px;
-			overflow: hidden;
-			float: left;
-			height: 80%;
-			position: relative;
-			top: 50%;
-			background-color: $backgroundColor;
-			padding: 0 0 10px;
-			margin: 0 10px;
-			transform: translateY(-50%) rotate(1.5deg);
-			font-size:20px;
-
-			&:nth-child(2n){
-				transform: translateY(-50%) rotate(-2deg);;
-			}
-			&:nth-child(3n){
-				transform: translateY(-50%) rotate(2deg);;
-			}
-
-			img{
-				height: 94%;
-			}
-		}
-	}
-
-	&#developer{
-		width: 100%;
-		background: url("/images/grass.png") 0 0;
-		z-index:20;
-		.inner{
-			position: relative;
-			height: 100%;
-		}
-
-		#dragon-sprite{
-			position: absolute;
-			left: 50%;
-			transform: translateX(-50%);
-			z-index: 21;
-		}
-
-		#cave{
-			position: absolute;
-			top: -90px;
-			left: 50%;
-			transform: translateX(-50%);
-			z-index: 22;
-		}
-
-		.text-box{
-			-webkit-transform:translate3d(0,0,0);
-			opacity: 0;
-			width: 80%;
-			padding: 10px;
-			background-color: blue;
-			border: 5px solid white;
-			border-radius: 10px;
-			position: fixed;
-			top: 90%;
-			left: 50%;
-			transform: translateY(-100%) translateX(-50%);
-			color: white;
-			font-family: 'VT323';
-			font-size: 25px;
-			z-index: 24;
-
-			span{
-				color: blue;
-			}
-		}
-
-		.tree-tile{
-			-webkit-transform:translate3d(0,0,0);
-			height: 1000%;
-			background: url(/images/trees.png) top left repeat-y;
-			position: absolute;
-			top: 0;
-			width: 320px;
-			left: -175px;
-			margin-top: 275px;
-			z-index: 23;
-
-			&.right{
-				right: -175px;
-				left: auto;
-			}
-
-			&:before{
-				content: "";
-				display: block;
-				width: 320px;
-				height: 81px;
-				position: absolute;
-				top: -81px;
-				background: url(/images/tree-tops.png) top left no-repeat;
-			}
-		}
-	}
-
-	&#services{
-		z-index: 30;
-		width: 100%;
-		height: 300%;
-		box-shadow: 0px -4px 45px 0px rgba(0,0,0,0.75);
-		background: green;
-	}
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 0 7%;
+    -webkit-transform: translate3d(0,0,0);
+    text-align: center;
+    .header-background{
+        position: absolute;
+        left: 0;
+        margin-top: -15px;
+    }
+    &#about{
+        z-index: 20;
+        padding-top: 180px;
+        background: $backgroundColor;
+        box-shadow: 0 23px 45px -14px rgba(0,0,0,.75);
+    }
+    &#father{
+        z-index: 19;
+        width: 3000px;
+        padding-left: 1100px;
+        background-color: brown;
+        figure{
+            font-size: 20px;
+            position: relative;
+            top: 50%;
+            float: left;
+            overflow: hidden;
+            height: 80%;
+            margin: 0 10px;
+            padding: 0 0 10px;
+            transform: translateY(-50%) rotate(1.5deg);
+            border-radius: 10px;
+            background-color: $backgroundColor;
+            &:nth-child(2n){
+                transform: translateY(-50%) rotate(-2deg);;
+            }
+            &:nth-child(3n){
+                transform: translateY(-50%) rotate(2deg);;
+            }
+            img{
+                height: 94%;
+            }
+        }
+    }
+    &#developer{
+        z-index: 20;
+        width: 100%;
+        background: url('/images/grass.png') 0 0;
+        .inner{
+            position: relative;
+            height: 100%;
+        }
+        #dragon-sprite{
+            position: absolute;
+            z-index: 21;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #cave{
+            position: absolute;
+            z-index: 22;
+            top: -90px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .text-box{
+            font-family: 'VT323';
+            font-size: 25px;
+            position: fixed;
+            z-index: 24;
+            top: 90%;
+            left: 50%;
+            width: 80%;
+            padding: 10px;
+            -webkit-transform: translate3d(0,0,0);
+                    transform: translateY(-100%) translateX(-50%);
+            opacity: 0;
+            color: white;
+            border: 5px solid white;
+            border-radius: 10px;
+            background-color: blue;
+            span{
+                color: blue;
+            }
+        }
+        .tree-tile{
+            position: absolute;
+            z-index: 23;
+            top: 0;
+            left: -175px;
+            width: 320px;
+            height: 1000%;
+            margin-top: 275px;
+            -webkit-transform: translate3d(0,0,0);
+            background: url(/images/trees.png) top left repeat-y;
+            &.right{
+                right: -175px;
+                left: auto;
+            }
+            &:before{
+                position: absolute;
+                top: -81px;
+                display: block;
+                width: 320px;
+                height: 81px;
+                content: '';
+                background: url(/images/tree-tops.png) top left no-repeat;
+            }
+        }
+    }
+    &#services{
+        z-index: 30;
+        width: 100%;
+        height: 300%;
+        background: green;
+        box-shadow: 0 -4px 45px 0 rgba(0,0,0,.75);
+    }
 }
