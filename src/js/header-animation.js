@@ -18,6 +18,7 @@ function HeaderNavigation(){
 	this.lastFrame = 0;
 	this.cloudLayer1Offset = 0;
 	this.cloudLayer2Offset = 0;
+	this.playing = true;
 
 	this.init = function(){
 		this.canvas = document.querySelector('header canvas');
@@ -58,37 +59,37 @@ function HeaderNavigation(){
 			_this.Draw(timestamp);
 		})();
 	}
-	
+
 	this.LoadTrees = function(){
 		var trees = [];
 		if(document.querySelector('body').offsetWidth >  400){
 			trees.push({x:100,y:50,h:70,w:90,t:"dragon", sx:340, sy:460, ys: -9});
 			trees.push({x:670,y:15,h:115,w:150,t:"castle", sx:355, sy:115, ys: -5});
-		
+
 			trees.push({x:123,y:44,h:55,w:39,t:2});
 			trees.push({x:85,y:43,h:60,w:42,t:1});
-			
+
 			trees.push({x:225,y:35,h:55,w:39,t:0});
-			
+
 			trees.push({x:305,y:48,h:35,w:25,t:1});
 			trees.push({x:280,y:50,h:60,w:42,t:0});
 			trees.push({x:355,y:38,h:60,w:42,t:1});
 			trees.push({x:320,y:50,h:60,w:42,t:2});
-			
+
 			trees.push({x:385,y:55,h:40,w:28,t:2});
 			trees.push({x:405,y:30,h:60,w:42,t:2});
-			
+
 			trees.push({x:455,y:38,h:60,w:42,t:0});
 			trees.push({x:420,y:47,h:60,w:42,t:2});
-			
+
 			trees.push({x:505,y:40,h:55,w:39,t:0});
 			trees.push({x:590,y:67,h:40,w:28,t:1});
-			
-			
+
+
 			trees.push({x:605,y:40,h:60,w:42,t:0});
 			trees.push({x:540,y:67,h:60,w:42,t:1});
 			trees.push({x:620,y:53,h:60,w:42,t:0});
-			
+
 			trees.push({x:780,y:50,h:60,w:42,t:0});
 			trees.push({x:855,y:38,h:60,w:42,t:1});
 			trees.push({x:820,y:50,h:60,w:42,t:2});
@@ -97,7 +98,7 @@ function HeaderNavigation(){
 
 			trees.push({x:505,y:40,h:55,w:39,t:0});
 			trees.push({x:590,y:67,h:40,w:28,t:1});
-				
+
 			trees.push({x:555,y:40,h:60,w:42,t:0});
 			trees.push({x:450,y:27,h:60,w:42,t:1});
 			trees.push({x:610,y:53,h:60,w:42,t:0});
@@ -112,38 +113,36 @@ function HeaderNavigation(){
 
 	this.Draw = function(timestamp){
 		// Limit to 60 fps
-		if(timestamp-this.lastFrame < 1000/60){
+		if(!this.playing || timestamp-this.lastFrame < 1000/60){
 			return;
 		}
 		this.lastFrame = timestamp;
 
 		this.LoadTrees();
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-		
+
 		// Draw skyline for clipping
-		this.DrawSkyline();
+		this.drawSkyline();
 		this.ctx.globalCompositeOperation = "source-out";
-		this.DrawSky();
-		
+		this.drawSky();
+
 		this.ctx.globalCompositeOperation = "source-atop";
 		this.astralPosition.rad += .005;
 		this.drawAstralItems(this.astralPosition.rad);
-		
+
 		this.ctx.globalCompositeOperation = "source-over";
 		this.cloudLayer1Offset -= .6;
 		this.cloudLayer2Offset -= .4;
-		this.DrawClouds();
-
-
+		this.drawClouds();
 
 		this.ctx.globalCompositeOperation = "source-over";
-		this.DrawSkyline();
+		this.drawSkyline();
 		this.drawShadows();
 		this.drawTrees();
-		this.Tint();
+		this.tint();
 	}
 
-	this.DrawSkyline = function(){
+	this.drawSkyline = function(){
 		this.ctx.save();
 		this.ctx.translate(0, this.topOffset);
 		this.ctx.fillStyle = this.skylinePattern;
@@ -151,7 +150,7 @@ function HeaderNavigation(){
     	this.ctx.restore();
 	}
 
-	this.Tint = function(){
+	this.tint = function(){
 		var baseColors = [200, 100, 0]; // base orange
 		var newColors = [];
 		var alpha = Math.max(0.4-this.GetAlpha(), 0);
@@ -167,22 +166,15 @@ function HeaderNavigation(){
 		this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
 	}
 
-	this.DrawSky = function(){
+	this.drawSky = function(){
 		var baseColors = [47, 169, 214];
 		var newColors = [];
-		//if(dayCycle == "day"){
-			var y = Math.min(Math.max(this.astralPosition.y, 1), 250);
-			var p = 1.044444+0.002177778*y;
-			for(var x = 0; x<3;x++){
-				newColors[x] = Math.floor(baseColors[x]*p);
-			}
-		// }else{
-		// 	var y = Math.min(Math.max($("#moon").offset().top, 1), 250);
-		// 	var p = 0.1611111111+0.001555555*y;
-		// 	for(var x = 0; x<3;x++){
-		// 		newColors[x] = Math.floor(baseColors[x]*p);
-		// 	}
-		// }
+
+		var y = Math.min(Math.max(this.astralPosition.y, 1), 250);
+		var p = 1.044444+0.002177778*y;
+		for(var x = 0; x<3;x++){
+			newColors[x] = Math.floor(baseColors[x]*p);
+		}
 
 		this.ctx.globalAlpha = 0.8;
 		this.ctx.fillStyle = "rgba("+newColors[0]+","+newColors[1]+","+newColors[2]+",0.5)";
@@ -190,14 +182,14 @@ function HeaderNavigation(){
 		this.ctx.globalAlpha = 1;
 	}
 
-	this.DrawClouds = function(){
+	this.drawClouds = function(){
 		var imageWidth = 1181;
 		this.ctx.save();
 		this.ctx.translate(this.cloudLayer1Offset, 0);
 		this.ctx.fillStyle = this.cloudLayer1;
 		this.ctx.fillRect(0, 0, imageWidth*2, this.canvas.height);
 		this.ctx.restore()
-		
+
 		this.ctx.save();
 		this.ctx.translate(this.cloudLayer2Offset, 0);
 		this.ctx.fillStyle = this.cloudLayer2;
@@ -231,7 +223,7 @@ function HeaderNavigation(){
 			//scale-x, skew-x, skew-y, scale-y, translate-x, translate-y
 			bctx.transform(1,0,trans.skew*trans.skewDirection,-trans.scale,trans.x,trans.y);
 			if(isNaN(t.t)){
-				bctx.drawImage(this.sprite,t.sx,t.sy,t.w,t.h,0,0,t.w,t.h);	
+				bctx.drawImage(this.sprite,t.sx,t.sy,t.w,t.h,0,0,t.w,t.h);
 			}else{
 				bctx.drawImage(this.treeImages[t.t],0,0,t.w,t.h);
 			}
@@ -251,7 +243,7 @@ function HeaderNavigation(){
 		for(var tree in this.trees){
 			var t = this.trees[tree];
 			if(isNaN(t.t)){
-				this.ctx.drawImage(this.sprite,t.sx,t.sy,t.w,t.h,t.x,t.y+this.topOffset,t.w,t.h);	
+				this.ctx.drawImage(this.sprite,t.sx,t.sy,t.w,t.h,t.x,t.y+this.topOffset,t.w,t.h);
 			}else{
 				this.ctx.drawImage(this.treeImages[t.t],t.x,t.y+this.topOffset,t.w,t.h);
 			}
@@ -271,7 +263,7 @@ function HeaderNavigation(){
 		this.ctx.drawImage(this.sprite, 296, 879, 150, 150, xPos, yPos, 150, 150);
 
 		xPos = x*Math.cos(theta)+this.canvas.width/2.2;
-		yPos = y*Math.sin(theta)+this.topOffset+y/3;		
+		yPos = y*Math.sin(theta)+this.topOffset+y/3;
 		this.ctx.drawImage(this.sprite, 430, 879, 150, 150, xPos, yPos, 150, 150);
 	}
 
@@ -284,12 +276,12 @@ function HeaderNavigation(){
 		var P2 = {}
 		P2.x = this.astralPosition.x+50;
 		P2.y = this.astralPosition.y;
-		
+
 		var P3 = {};
-		
+
 		P3.x = P2.x;
 		P3.y = P1.y;
-		
+
 		//get lengths
 		var L12 = this.lineLength(P1,P2);
 		var L13 = this.lineLength(P1,P3);
@@ -301,7 +293,7 @@ function HeaderNavigation(){
 		//right or left of sun
 		trans.skewDirection = 1;
 		if(P2.x <= P1.x){
-			trans.skewDirection = -1;		
+			trans.skewDirection = -1;
 		}
 
 
@@ -314,10 +306,10 @@ function HeaderNavigation(){
 		var width = (skewModifier*trans.skew)+t.w;
 		//test new width calc
 		var len = this.lineLength({x:0,y:0},{x:t.w,y:t.h});
-		width = len*trans.skew;	
+		width = len*trans.skew;
 		width = trans.skew*t.h+t.w;
 		var height = t.h*trans.scale;
-		
+
 		trans.y = -this.canvas.height+t.y+t.h+height-4+this.topOffset;
 		if(typeof t.sy != "undefined"){
 			trans.y += t.ys;
@@ -326,14 +318,20 @@ function HeaderNavigation(){
 		if(trans.skewDirection == -1){
 			trans.x = t.x-t.w+width;
 		}
-		
 		return trans;
-		
-	}
+	};
 
 	this.lineLength = function(P1, P2){
 		return Math.sqrt(Math.abs((P1.x - P2.x)*(P1.x - P2.x) + (P1.y - P2.y)*(P1.y - P2.y)));
-	}
+	};
+
+	this.pause = function(){
+		this.playing = false;
+	};
+
+	this.play = function(){
+		this.playing = true;
+	};
 };
 
 var headerNavigation = new HeaderNavigation();

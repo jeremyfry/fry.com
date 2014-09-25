@@ -239,18 +239,18 @@
 	}
 
 	@-skrollr-keyframes textBox1 {
-		_fatheroffset-100 {
+		_textbox1--50 {
 			opacity: 0;
 		}
 
-		_fatheroffset-200 {
+		_textbox1 {
 			opacity: 1;
 		}
 
-		_fatheroffset-600 {
+		_textbox1-350 {
 			opacity: 1;
 		}
-		_fatheroffset-700 {
+		_textbox1-450 {
 			opacity: 0;
 		}
 	}
@@ -260,81 +260,78 @@
 	}
 
 	@-skrollr-keyframes textBox2 {
-		_fatheroffset-900 {
+		_textbox2--50 {
 			opacity: 0;
 		}
 
-		_fatheroffset-1000 {
+		_textbox2 {
 			opacity: 1;
 		}
 
-		_fatheroffset-1400 {
+		_textbox2-350 {
 			opacity: 1;
 		}
-		_fatheroffset-1500 {
+		_textbox2-450 {
 			opacity: 0;
 		}
 	}
-
 	.text-box:nth-child(3) {
 		-skrollr-animation-name:textBox3;
 	}
 
 	@-skrollr-keyframes textBox3 {
-		_fatheroffset-1700 {
+		_textbox3--50 {
 			opacity: 0;
 		}
 
-		_fatheroffset-1800 {
+		_textbox3 {
 			opacity: 1;
 		}
 
-		_fatheroffset-2300 {
+		_textbox3-350 {
 			opacity: 1;
 		}
-		_fatheroffset-2400 {
+		_textbox3-450 {
 			opacity: 0;
 		}
 	}
-
 	.text-box:nth-child(4) {
 		-skrollr-animation-name:textBox4;
 	}
 
 	@-skrollr-keyframes textBox4 {
-		_fatheroffset-2600 {
+		_textbox4--50 {
 			opacity: 0;
 		}
 
-		_fatheroffset-2700 {
+		_textbox4 {
 			opacity: 1;
 		}
 
-		_fatheroffset-3200 {
+		_textbox4-350 {
 			opacity: 1;
 		}
-		_fatheroffset-3300 {
+		_textbox4-450 {
 			opacity: 0;
 		}
 	}
-
 	.text-box:nth-child(5) {
 		-skrollr-animation-name:textBox5;
 	}
 
 	@-skrollr-keyframes textBox5 {
-		_fatheroffset-3500 {
+		_textbox5--50 {
 			opacity: 0;
 		}
 
-		_fatheroffset-3600 {
+		_textbox5 {
 			opacity: 1;
 		}
 
-		_fatheroffset-4200 {
+		_textbox5-350 {
 			opacity: 1;
 		}
-		_fatheroffset-4300 {
+		_textbox5-450 {
 			opacity: 0;
 		}
 	}

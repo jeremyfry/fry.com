@@ -24,18 +24,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	var s = skrollr.init({
 		constants: {
 			headeroffset: 350,
-			aboutoffset: windowHeight(1.4),
-			fatheroffset: windowHeight(2.7),
-			developeroffset: windowHeight(8),
-			servicesoffset: windowHeight(10)
+			aboutoffset: '140p',
+			fatheroffset: '270p',
+			developeroffset: '950p',
+			servicesoffset: '1200p',
+			// Text boxes in the developer section
+			textbox1: '320p',
+			textbox2: '450p',
+			textbox3: '580p',
+			textbox4: '710p',
+			textbox5: '840p'
 		},
 		keyframe: function(element, name, direction) {
-			dragonSprite.setDirection(direction);
-			dragonSprite.play();
-			clearTimeout(dragonTimeout);
-			dragonTimeout = setTimeout(function(){
-				dragonSprite.pause();
-			}, 200);
+
+			console.log(name);
+			if(name.substr(0, 17) === "data_fatheroffset" || name === "data_developeroffset"){
+				dragonSprite.setDirection(direction);
+				dragonSprite.play();
+				clearTimeout(dragonTimeout);
+				dragonTimeout = setTimeout(function(){
+					dragonSprite.pause();
+				}, 200);
+			}
 
 			if(name.substr(0, 17) === "data_fatheroffset"){
 				textBoxNodes.forEach(function(node){
@@ -43,13 +53,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 						animateText(node);
 					}
 				});
-			};
+			}
+
+			if(name === "data_headeroffset"){
+				headerNavigation.pause();
+			}else if(name === "data_headeroffset-1"){
+				headerNavigation.play();
+			}
 		}
 	});
-
-	function windowHeight(m) {
-		return window.outerHeight*m;
-	}
+	skrollr.menu.init(s, {
+		animate: true,
+		handleLink: function(link) {
+			//TOD: Implement menu
+		}
+	});
 
 	function resizeCanvas(event) {
 		Array.prototype.forEach.call(canvasElements, function(element){
@@ -94,13 +112,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		treesEl = qs("#trees-fallback");
 		treesEl.parentNode.removeChild(treesEl);
 	}
-
-	Array.prototype.forEach.call(document.querySelectorAll("section h1"), function(element){
-		var el = document.createElement('canvas');
-		el.className = 'header-background';
-		element.insertAdjacentElement('beforebegin', el);
-		new HeaderBackground(el);
-	});
 
 	canvasElements = document.querySelectorAll("canvas.full-width");
 	window.addEventListener("resize", resizeCanvas);

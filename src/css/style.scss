@@ -32,7 +32,6 @@ article, aside, canvas, details, embed, figure, figcaption, footer, header, hgro
 menu, nav, output, ruby, section, summary, time, mark, audio, video {
 	margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
 
-
 html{
 	background: $backgroundColor;
 }
@@ -270,6 +269,7 @@ section{
 	position: fixed;
 	top: 0;
 	left: 0;
+	-webkit-transform:translate3d(0,0,0);
 
 	.header-background{
 		position: absolute;
@@ -341,6 +341,7 @@ section{
 		}
 
 		.text-box{
+			-webkit-transform:translate3d(0,0,0);
 			opacity: 0;
 			width: 80%;
 			padding: 10px;
@@ -362,7 +363,8 @@ section{
 		}
 
 		.tree-tile{
-			height: 600%;
+			-webkit-transform:translate3d(0,0,0);
+			height: 1000%;
 			background: url(/images/trees.png) top left repeat-y;
 			position: absolute;
 			top: 0;

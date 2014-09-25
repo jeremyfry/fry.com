@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 			dist: {
 				src: ['src/js/modernizr.js', 'src/js/srcset-polyfill.js', 'src/js/helpers.js',
 					'src/js/animatedSprite.js', 'src/js/header-background.js', 'src/js/header-animation.js',
-					'src/js/skrollr-stylesheet.js', 'src/js/skrollr.js', 
+					'src/js/skrollr-stylesheet.js', 'src/js/skrollr.js', 'src/js/skrollr.menu.js',
 					'src/js/page-flow.js'],
 				dest: 'dist/scripts.js'
 			}
