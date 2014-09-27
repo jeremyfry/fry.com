@@ -76,13 +76,13 @@
 
 	@-skrollr-keyframes lastName {
 		0 {
-			top: 0px;
+			top: 5px;
 			font-size: 45px;
 			left: 0px;
 		}
 
 		200 {
-			top: -27px;
+			top: -24px;
 			font-size: 39px;
 			left: -5px;
 		}
