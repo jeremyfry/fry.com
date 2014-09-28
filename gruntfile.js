@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 		watch: {
 			src: {
 				files: ['*.html', 'src/**'],
-				tasks: ['compass', 'concat', 'copy'],
+				tasks: ['compass', 'concat', 'copy', 'autoprefixer'],
 				options: { livereload: true }
 			}
 		},
@@ -35,6 +35,12 @@ module.exports = function(grunt) {
 				]
 			}
 		},
+		autoprefixer: {
+			dist:{
+				expand: true,
+				src: 'dist/style.css'
+			}
+		},
 		connect: {
 			server: {
 				options: {
@@ -50,7 +56,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-autoprefixer');
 
-  grunt.registerTask('server', "Serve your app", ['connect:server', 'watch' ]);
+  grunt.registerTask('serve', "Serve your app", ['connect:server', 'watch' ]);
 }
 

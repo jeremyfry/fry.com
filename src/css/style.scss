@@ -84,6 +84,15 @@ header{
 	height: 340px;
 }
 
+#begin{
+	position: fixed;
+	top: 400px;
+	text-align: center;
+	width: 100%;
+	font-size: 27px;
+	font-family: $pixelFont;
+}
+
 .shield{
 	font-family: $englishFont;
 	position: fixed;
@@ -129,14 +138,18 @@ section{
 	}
 	&#about{
 		z-index: 20;
-		padding-top: 180px;
+		padding-top: 160px;
 		background: $backgroundColor;
 		box-shadow: 0 23px 45px -14px rgba(0,0,0,.75);
+		line-height: 29px;
+		@media screen and (max-height: 570px){
+			line-height: 24px;
+		}
 	}
-	&#father{
+	&#personal{
 		z-index: 19;
-		width: 3000px;
-		padding-left: 1100px;
+		width: 4500px;
+		padding-left: 1400px;
 		background: url("/images/boards.jpg") top left;
 		font-size: 19vh;
 		figure{
@@ -153,7 +166,7 @@ section{
 			border: 8px solid black;
 			&:nth-child(2){
 				transform: translateY(-50%) rotate(-1.5deg);
-				background-image: url("/images/harley.jpg");
+				background-image: url("/images/lacey.jpg");
 			}
 			&:nth-child(3){
 				transform: translateY(-50%) rotate(1.5deg);
@@ -161,7 +174,11 @@ section{
 			}
 			&:nth-child(4){
 				transform: translateY(-50%) rotate(-1.5deg);
-				background-image: url("/images/harley.jpg");
+				background-image: url("/images/laughter.jpg");
+			}
+			&:nth-child(5){
+				transform: translateY(-50%) rotate(-1.5deg);
+				background-image: url("/images/ninja.jpg");
 			}
 
 			figcaption{
@@ -205,9 +222,9 @@ section{
 			top: 90%;
 			left: 50%;
 			width: 80%;
+			max-width: 400px;
 			padding: 10px;
-			-webkit-transform: translate3d(0,0,0);
-					transform: translateY(-100%) translateX(-50%);
+			transform: translate3d(0,0,0) translateY(-100%) translateX(-50%);
 			opacity: 0;
 			color: white;
 			border: 5px solid white;
@@ -233,7 +250,7 @@ section{
 			}
 			&:before{
 				position: absolute;
-				top: -81px;
+				top: -80px;
 				display: block;
 				width: 320px;
 				height: 81px;

@@ -88,6 +88,20 @@
 		}
 	}
 
+	#begin {
+		-skrollr-animation-name:beginText;
+	}
+
+	@-skrollr-keyframes beginText{
+		0 {
+			opacity: 1;
+		}
+
+		200 {
+			opacity: 0;
+		}
+	}
+
 /*********************
 	Intro
 *********************/
@@ -130,13 +144,13 @@
 		}
 	}
 /*********************
-	Father
+	Personal
 *********************/
 
-	#father {
-		-skrollr-animation-name:fatherSection;
+	#personal {
+		-skrollr-animation-name:personalSection;
 	}
-	@-skrollr-keyframes fatherSection {
+	@-skrollr-keyframes personalSection {
 		_headeroffset--1 {
 			opacity: 0;
 		}
@@ -146,8 +160,8 @@
 			left: 0px;
 		}
 
-		_fatheroffset {
-			left: -2500px;
+		_personaloffset {
+			left: -3500px;
 		}
 	}
 
@@ -160,17 +174,17 @@
 	}
 
 	@-skrollr-keyframes developerSection {
-		_fatheroffset--200 {
+		_personaloffset--200 {
 			opacity: 0;
 			background-position: 0px 0px;
 		}
 
-		_fatheroffset {
+		_personaloffset {
 			opacity: 1;
 			background-position: 0px 0px;
 		}
 
-		_fatheroffset-100 {
+		_personaloffset-100 {
 			opacity: 1;
 			background-position: 0px 0px;
 		}
@@ -187,7 +201,7 @@
 
 	@-skrollr-keyframes cave {
 
-		_fatheroffset-100 {
+		_personaloffset-100 {
 			top: -90px;
 		}
 
@@ -196,31 +210,16 @@
 		}
 	}
 
-	#developer .inner {
-		-skrollr-animation-name:devInnerSection;
-	}
-
-	@-skrollr-keyframes devInnerSection {
-		_fatheroffset-100 {
-			top: 0%;
-		}
-
-		_developeroffset {
-			top: -150%;
-		}
-
-	}
-
 	#dragon-sprite {
 		-skrollr-animation-name:dragonSprite;
 	}
 
 	@-skrollr-keyframes dragonSprite {
-		_fatheroffset--100 {
+		_personaloffset--100 {
 			top: 0%;
 		}
 
-		_fatheroffset-100 {
+		_personaloffset-100 {
 			top: 0%;
 		}
 

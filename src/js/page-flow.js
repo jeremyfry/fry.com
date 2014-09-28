@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		constants: {
 			headeroffset: 350,
 			aboutoffset: '140p',
-			fatheroffset: '270p',
+			personaloffset: '270p',
 			developeroffset: '950p',
 			servicesoffset: '1200p',
 			// Text boxes in the developer section
@@ -36,18 +36,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			textbox5: '840p'
 		},
 		keyframe: function(element, name, direction) {
-
 			console.log(name);
-			if(name.substr(0, 17) === "data_fatheroffset" || name === "data_developeroffset"){
+			if(name.substr(0, 19) === "data_personaloffset" ||
+				name === "data_developeroffset" ||
+				name.substr(0, 12) === "data_textbox"){
 				dragonSprite.setDirection(direction);
 				dragonSprite.play();
 				clearTimeout(dragonTimeout);
 				dragonTimeout = setTimeout(function(){
 					dragonSprite.pause();
 				}, 200);
-			}
 
-			if(name.substr(0, 17) === "data_fatheroffset"){
 				textBoxNodes.forEach(function(node){
 					if(window.getComputedStyle(node).opacity === "1" && !node.classList.contains('animated')){
 						animateText(node);
@@ -60,7 +59,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			}else if(name === "data_headeroffset-1"){
 				headerNavigation.play();
 			}
-		}
+		},
+		mobileDeceleration: 1
 	});
 	skrollr.menu.init(s, {
 		animate: true,
