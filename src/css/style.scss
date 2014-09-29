@@ -2,25 +2,49 @@ $bodycolor: #2c220d;
 $backgroundColor: #d5bf99;
 $linkcolor: #6e5723;
 $brownborder: #875960;
-$englishFont: 'DeutscheZierschriftRegular', cursive;
+$englishFont: '8-bit_limit_brkregular', cursive;
 $bodyFont: 'IM Fell Great Primer', serif;
 $pixelFont: 'VT323';
+$pixelTitleFont: '8-bit_limit_brkregular';
+$zeldaFont: 'return_of_ganonregular';
 @mixin sprite($url, $y, $x, $repeat, $size: 100%){
 	background: url($url) $y $x $repeat;
 	background-size: $size $size;
 }
 
+@mixin gameTitleFont($color){
+	text-shadow: 3px 3px 0 $color,
+		-1px -1px 0 $color,
+		1px -1px 0 $color,
+		-1px 1px 0 $color,
+		1px 1px 0 $color;
+}
+
 @import url(http://fonts.googleapis.com/css?family=IM+Fell+Great+Primer:400,400italic);
 @import url(http://fonts.googleapis.com/css?family=VT323);
-@font-face{
-	font-family: 'DeutscheZierschriftRegular';
-	font-weight: normal;
-	font-style: normal;
-	src: url('fonts/deutschezierschrift-webfont.eot');
-	src: url('fonts/deutschezierschrift-webfont.eot?iefix') format('eot'),
-	url('fonts/deutschezierschrift-webfont.woff') format('woff'),
-	url('fonts/deutschezierschrift-webfont.ttf') format('truetype'),
-	url('fonts/deutschezierschrift-webfont.svg#webfont7VbnShq8') format('svg');
+
+@font-face {
+    font-family: '8-bit_limit_brkregular';
+    src: url('fonts/8bitlim-webfont.eot');
+    src: url('fonts/8bitlim-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/8bitlim-webfont.woff2') format('woff2'),
+         url('fonts/8bitlim-webfont.woff') format('woff'),
+         url('fonts/8bitlim-webfont.ttf') format('truetype'),
+         url('fonts/8bitlim-webfont.svg#8-bit_limit_brkregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'return_of_ganonregular';
+    src: url('fonts/returnofganon-webfont.eot');
+    src: url('fonts/returnofganon-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/returnofganon-webfont.woff2') format('woff2'),
+         url('fonts/returnofganon-webfont.woff') format('woff'),
+         url('fonts/returnofganon-webfont.ttf') format('truetype'),
+         url('fonts/returnofganon-webfont.svg#return_of_ganonregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video{
@@ -73,7 +97,6 @@ body{
 		font-size: 38px;
 		margin-bottom: 15px;
 		text-align: center;
-		color: #333;
 	}
 }
 
@@ -97,27 +120,28 @@ header{
 	font-family: $englishFont;
 	position: fixed;
 	z-index: 200;
-	top: 30px;
+	top: -11px;
 	left: 0;
 	width: 100%;
 	#shield{
 		font-size: 45px;
-		width: 275px;
+		color: #c9a461;
+		@include gameTitleFont(#2f2311);
+		width: 245px;
 		height: 150px;
 		margin: 0 auto;
 		text-align: center;
 		@include sprite('images/sprite.png', -5px, -193px, no-repeat, 800px);
 		.first{
-			font-size: 22px;
+			font-size: 29px;
 			display: block;
-			margin-bottom: -5px;
-			padding-top: 19px;
+			margin-bottom: 16px;
+			padding-top: 34px;
 		}
 		.last{
-			font-size: 45px;
-			position: relative;
-			text-decoration: none;
-			color: #222;
+			top: 5px;
+			font-size: 20px;
+			left: 0px;
 		}
 	}
 }
@@ -142,8 +166,18 @@ section{
 		background: $backgroundColor;
 		box-shadow: 0 23px 45px -14px rgba(0,0,0,.75);
 		line-height: 29px;
-		@media screen and (max-height: 570px){
-			line-height: 24px;
+		width: 100%;
+		h1{
+			color: #8fa973;
+			@include gameTitleFont(#2f2311);
+			font-size: 10vw;
+			line-height: 12vw;
+			@media screen and (min-width: 900px){
+				font-size: 60px;
+			}
+		}
+		p{
+			width: 850px;
 		}
 	}
 	&#personal{
@@ -165,12 +199,12 @@ section{
 			background-size: cover;
 			border: 8px solid black;
 			&:nth-child(2){
-				transform: translateY(-50%) rotate(-1.5deg);
-				background-image: url("/images/lacey.jpg");
-			}
-			&:nth-child(3){
 				transform: translateY(-50%) rotate(1.5deg);
 				background-image: url("/images/harley.jpg");
+			}
+			&:nth-child(3){
+				transform: translateY(-50%) rotate(-1.5deg);
+				background-image: url("/images/lacey.jpg");
 			}
 			&:nth-child(4){
 				transform: translateY(-50%) rotate(-1.5deg);
@@ -187,7 +221,7 @@ section{
 				position: absolute;
 				padding: 5px 0;
 				bottom: -5px;
-				background-color: white;
+				background-color: rgba(255,255,255,0.8);
 				width: 100%;
 				border-bottom: 8px solid black;
 			}
@@ -213,6 +247,9 @@ section{
 			top: -90px;
 			left: 50%;
 			transform: translateX(-50%);
+			img{
+				height: 285px;
+			}
 		}
 		.text-box{
 			font-family: $pixelFont;
@@ -238,32 +275,122 @@ section{
 			position: absolute;
 			z-index: 23;
 			top: 0;
-			left: -175px;
 			width: 320px;
 			height: 1000%;
 			margin-top: 275px;
 			-webkit-transform: translate3d(0,0,0);
-			background: url(/images/trees.png) top left repeat-y;
-			&.right{
-				right: -175px;
-				left: auto;
+			background: url(/images/trees.png) top right repeat;
+			@media screen and (min-width: 450px){
+				width: 40%;
 			}
+
 			&:before{
 				position: absolute;
 				top: -80px;
 				display: block;
-				width: 320px;
+				width: 1000px;
 				height: 81px;
 				content: '';
-				background: url(/images/tree-tops.png) top left no-repeat;
+				background: url(/images/tree-tops.png) top right repeat;
 			}
+
+			&.right{
+				left: 61%;
+				background-position: top left;
+				&:before{
+					left: 0;
+					background-position:top left;
+				}
+			}
+			&.left{
+				right: 61%;
+				&:before{
+					right: 0;
+				}
+			}
+
 		}
 	}
 	&#services{
 		z-index: 30;
 		width: 100%;
-		height: 300%;
-		background: green;
+		height: 200%;
+		background: #145708;
 		box-shadow: 0 -4px 45px 0 rgba(0,0,0,.75);
+		color: white;
+		font-family: $pixelFont;
+		font-size: 14px;
+		h2, h1{
+			color: gold;
+			font-family: $pixelTitleFont;
+			transform: perspective(400px) rotateX(25deg);
+			@include gameTitleFont(#000);
+		}
+
+		h1{
+			font-size: 10vw;
+			@media screen and (min-width: 900px){
+				font-size: 70px;
+			}
+		}
+
+		h2{
+			font-size: 5vw;
+			margin-top: 20vh;
+			margin-bottom: .5vw;
+			@media screen and (min-width: 900px){
+				font-size: 35px;
+			}
+		}
+
+		p{
+			font-size: 20px;
+		}
+
+		.option-select{
+			width: 70%;
+			max-width: 400px;
+			border: 23px solid gold;
+			border-image: url('/images/zelda-border.png') 23 23 round;
+			padding: 10px 5px;
+			margin: 20px auto 80px auto;
+			text-align: left;
+			a{
+				position: relative;
+				color: white;
+				font-family: $zeldaFont;
+				font-size: 30px;
+				display: block;
+				padding-left: 35px;
+				margin: 15px 0;
+				@include gameTitleFont(#1c1a79);
+				&:hover:before{
+					content: "▶";
+					top: 2px;
+					left: 6px;
+					position: absolute;
+					font-size: 20px;
+					transform: scaleX(0.75);
+					@include gameTitleFont(#1c1a79);
+				}
+			}
+		}
+	}
+	&#fin{
+		width: 100%;
+		font-size: 20px;
+		color: gold;
+		font-family: $pixelTitleFont;
+		text-shadow: 3px 3px 0 #000,
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+		position: fixed;
+		top: 50%;
+		z-index: 100;
+		pointer-events: none;
 	}
 }
+
+

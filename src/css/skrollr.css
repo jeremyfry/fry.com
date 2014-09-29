@@ -20,71 +20,15 @@
 
 	@-skrollr-keyframes shieldWrap {
 		0 {
-			top: 30px;
+			top: -11px;
 		}
 
-		200 {
-			top: 20px;
-		}
-
-		_headeroffset-50 {
-			top: 20px;
+		_headeroffset-200 {
+			top: -11px;
 		}
 
 		_aboutoffset {
-			top: -115px;
-		}
-	}
-
-	#shield {
-		-skrollr-animation-name:shield;
-	}
-
-	@-skrollr-keyframes shield {
-		0 {
-			background-size: 800px;
-			background-position-y: -193px;
-			height: 150px;
-			width: 275px;
-		}
-
-		200 {
-			background-size: 580px;
-			background-position-y: -140px;
-			height: 110px;
-			width: 210px;
-		}
-	}
-
-	#shield .first {
-		-skrollr-animation-name:firstName;
-	}
-
-	@-skrollr-keyframes firstName {
-		0 {
-			opacity: 1;
-		}
-
-		200 {
-			opacity: 0;
-		}
-	}
-
-	#shield .last {
-		-skrollr-animation-name:lastName;
-	}
-
-	@-skrollr-keyframes lastName {
-		0 {
-			top: 5px;
-			font-size: 45px;
-			left: 0px;
-		}
-
-		200 {
-			top: -24px;
-			font-size: 39px;
-			left: -5px;
+			top: -215px;
 		}
 	}
 
@@ -216,15 +160,15 @@
 
 	@-skrollr-keyframes dragonSprite {
 		_personaloffset--100 {
-			top: 0%;
+			top: -10%;
 		}
 
 		_personaloffset-100 {
-			top: 0%;
+			top: 5%;
 		}
 
 		_developeroffset-100 {
-			top: 10%;
+			top: 15%;
 		}
 
 		_servicesoffset {
@@ -349,7 +293,26 @@
 		}
 
 		_servicesoffset {
-			top: -200%;
+			top: -100%;
+		}
+
+	}
+
+/*********************
+	Fin
+*********************/
+
+	#fin {
+		-skrollr-animation-name:finSection;
+	}
+
+	@-skrollr-keyframes finSection {
+		_servicesoffset {
+			opacity: 0;
+		}
+
+		_servicesoffset-200 {
+			opacity: 1;
 		}
 
 	}

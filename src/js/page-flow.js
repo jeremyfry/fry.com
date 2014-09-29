@@ -62,12 +62,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		},
 		mobileDeceleration: 1
 	});
-	skrollr.menu.init(s, {
-		animate: true,
-		handleLink: function(link) {
-			//TOD: Implement menu
-		}
-	});
 
 	function resizeCanvas(event) {
 		Array.prototype.forEach.call(canvasElements, function(element){
@@ -82,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		var fontColor =  "white";
 		animatedTextTimeout = setInterval(function(){
 			if(spanNodes[strLen].textContent === "["){
-				fontColor = "red";
+				fontColor = "#FA2525";
 			}
 
 			spanNodes[strLen].style.color = fontColor;
