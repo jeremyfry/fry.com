@@ -107,6 +107,15 @@ header{
 	height: 340px;
 }
 
+#sorry{
+	text-align: center;
+	position: relative;
+	top: 150px;
+	margin: 0 auto;
+	width: 400px;
+	display: none;
+}
+
 #begin{
 	position: fixed;
 	top: 400px;
@@ -177,7 +186,13 @@ section{
 			}
 		}
 		p{
-			width: 850px;
+			max-width: 530px;
+			margin: 0 auto;
+		}
+		@media screen and (min-width: 600px){
+			p+p{
+				margin-top: 20px;
+			}
 		}
 	}
 	&#personal{
@@ -345,11 +360,19 @@ section{
 
 		p{
 			font-size: 20px;
+			max-width: 480px;
+			margin: 0 auto;
+		}
+
+		@media screen and (min-width: 600px){
+			p+p{
+				margin-top: 20px;
+			}
 		}
 
 		.option-select{
 			width: 70%;
-			max-width: 400px;
+			max-width: 230px;
 			border: 23px solid gold;
 			border-image: url('/images/zelda-border.png') 23 23 round;
 			padding: 10px 5px;
