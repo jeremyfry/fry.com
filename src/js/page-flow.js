@@ -44,7 +44,6 @@ if(!Modernizr.canvas || !Modernizr.csstransforms){
 				textbox5: '840p'
 			},
 			keyframe: function(element, name, direction) {
-				console.log(name);
 				if(name.substr(0, 19) === "data_personaloffset" ||
 					name === "data_developeroffset" ||
 					name.substr(0, 12) === "data_textbox"){
