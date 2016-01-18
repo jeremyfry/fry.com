@@ -28,9 +28,9 @@ module.exports = function(grunt) {
 			dist: {
 				files: [
 					{ src: ['src/index.html'], dest: 'dist/index.html'},
-					{ src: ['src/images/**'], dest: 'dist/'},
-					{ src: ['src/fonts/**'], dest: 'dist/'},
-					{ src: ['src/css/skrollr.css'], dest: 'dist/skrollr.css'}
+					{ expand:true, cwd: 'src', src: ['./images/**/*'], dest: 'dist/'},
+					{ expand:true,  cwd: 'src', src: ['./fonts/**/*'], dest: 'dist/'},
+					{ expand:true,  cwd: 'src', src: ['./css/skrollr.css'], dest: 'dist/skrollr.css'}
 				]
 			}
 		},
