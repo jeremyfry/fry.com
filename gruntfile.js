@@ -27,9 +27,9 @@ module.exports = function(grunt) {
 		copy: {
 			dist: {
 				files: [
-					{ src: ['index.html'], dest: 'dist/index.html'},
-					{ src: ['images/**'], dest: 'dist/'},
-					{ src: ['fonts/**'], dest: 'dist/'},
+					{ src: ['src/index.html'], dest: 'dist/index.html'},
+					{ src: ['src/images/**'], dest: 'dist/'},
+					{ src: ['src/fonts/**'], dest: 'dist/'},
 					{ src: ['src/css/skrollr.css'], dest: 'dist/skrollr.css'}
 				]
 			}
@@ -56,6 +56,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-autoprefixer');
+  
+  grunt.registerTask('build', ['compass', 'concat', 'copy', 'autoprefixer']);
 
   grunt.registerTask('serve', "Serve your app", ['connect:server', 'watch' ]);
 };

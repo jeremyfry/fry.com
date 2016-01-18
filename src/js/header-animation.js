@@ -248,13 +248,16 @@ function HeaderNavigation(){
 
 	this.drawObjects = function(){
 		this.ctx.save();
+		// Determine offset so we can center the trees on the page
+		var offsetX = (window.innerWidth-1000)/2; // Trees are 1k wide
+		offsetX = Math.max(offsetX, 0);
 		for(var key in this.objectSet){
 			var t = this.objectSet[key];
 			if(isNaN(t.t)){
 				this.ctx.drawImage(this.sprite,t.sx,t.sy,t.w,t.h,t.x,t.y+this.topOffset,t.w,t.h);
 			}else{
 				this.ctx.drawImage.apply(this.ctx,
-					[].concat(this.drawnObjectsParams[t.t].slice(0,5), [t.x,t.y+this.topOffset,t.w,t.h]));
+					[].concat(this.drawnObjectsParams[t.t].slice(0,5), [t.x+offsetX,t.y+this.topOffset,t.w,t.h]));
 			}
 		}
 		this.ctx.restore();
