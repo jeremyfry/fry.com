@@ -216,21 +216,22 @@ function HeaderNavigation(){
 	this.drawShadows = function(){
 		var buffer;
 		var bctx;
-
+		var offsetX;
 		// Draw shadows to a buffer so they can be colored;
 		buffer = document.createElement('canvas');
 		buffer.width = this.canvas.width;
 		buffer.height = this.canvas.height;
 		bctx = buffer.getContext('2d');
+		offsetX = (window.innerWidth-1000)/2; // Trees are 1k wide
 
 		for(var key in this.objectSet){
 			bctx.save();
 			bctx.globalAlpha = this.GetAlpha();
 			bctx.translate(0, this.canvas.height);
 			var t = this.objectSet[key];
-			var trans = this.transValues(t);
-			//scale-x, skew-x, skew-y, scale-y, translate-x, translate-y
-			bctx.transform(1,0,trans.skew*trans.skewDirection,-trans.scale,trans.x,trans.y);
+			var trans = this.transValues(t, offsetX);
+			//scale-x, skew-x, skew-y, scale-y, translate-x, translate-y 
+			bctx.transform(1,0,trans.skew*trans.skewDirection,-trans.scale,trans.x+offsetX,trans.y);
 			if(isNaN(t.t)){
 				bctx.drawImage(this.sprite,t.sx,t.sy,t.w,t.h,0,0,t.w,t.h);
 			}else{
@@ -279,10 +280,10 @@ function HeaderNavigation(){
 		this.ctx.drawImage(this.sprite, 430, 879, 150, 150, xPos, yPos, 150, 150);
 	};
 
-	this.transValues = function(t){
+	this.transValues = function(t, offsetX){
 		var P1 = {};
 		P1.y = t.y+100;
-		P1.x = t.x;
+		P1.x = t.x+offsetX;
 
 		//sun
 		var P2 = {};
