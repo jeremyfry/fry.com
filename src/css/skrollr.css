@@ -14,13 +14,13 @@
 		}
 	}
 
-	.shield {
-		-skrollr-animation-name:shieldWrap;
+	.name {
+		-skrollr-animation-name:nameWrap;
 	}
 
-	@-skrollr-keyframes shieldWrap {
+	@-skrollr-keyframes nameWrap {
 		0 {
-			top: -11px;
+			top: 320px;
 		}
 
 		_headeroffset-200 {

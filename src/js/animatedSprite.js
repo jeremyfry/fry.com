@@ -7,16 +7,14 @@ function AnimatedSprite(options){
 
 	this.options = extend({
 		srcWidth: 64,
-		srcHeight: 64,
-		destWidth: 64,
-		destHeight: 64,
+		srcHeight: 75,
+		destWidth: 64*1.7,
+		destHeight: 75*1.7,
 		frames: [],
 		fps: 8
 	}, options);
 	this.lastFrame = 0;
-	this.ctx;
-	this.spriteSheet;
-	
+
 	this.init = function(){
 		this.options.canvas.width = this.options.destWidth;
 		this.options.canvas.height = this.options.destHeight;
@@ -55,7 +53,7 @@ function AnimatedSprite(options){
 		currentFrame = (currentFrame+1)%this.options.frames[direction].length;
 		frame = this.options.frames[direction][currentFrame];
 
-		this.ctx.clearRect(0,0,this.options.destWidth, this.options.destWidth);
+		this.ctx.clearRect(0,0,this.options.destWidth, this.options.destHeight);
 		this.ctx.drawImage(this.spriteSheet, frame.x, frame.y,
 			this.options.srcWidth, this.options.srcHeight, 0, 0,
 			this.options.destWidth, this.options.destHeight);

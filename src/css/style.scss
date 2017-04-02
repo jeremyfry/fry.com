@@ -12,8 +12,8 @@ $zeldaFont: 'return_of_ganonregular';
 	background-size: $size $size;
 }
 
-@mixin gameTitleFont($color){
-	text-shadow: 3px 3px 0 $color,
+@mixin gameTitleFont($color, $size:3px){
+	text-shadow: $size $size 0 $color,
 		-1px -1px 0 $color,
 		1px -1px 0 $color,
 		-1px 1px 0 $color,
@@ -118,42 +118,123 @@ header{
 
 #begin{
 	position: fixed;
-	top: 400px;
+  	bottom: 5vh;
 	text-align: center;
 	width: 100%;
 	font-size: 27px;
 	font-family: $pixelFont;
 }
 
-.shield{
-	font-family: $englishFont;
-	position: fixed;
-	z-index: 200;
-	top: -11px;
-	left: 0;
+.name{
+  	position: absolute;
+	font-size: 45px;
+	color: #c9a461;
+  	font-family: '8-bit_limit_brkregular', sans-serif;
+	@include gameTitleFont(#2f2311);
 	width: 100%;
-	#shield{
-		font-size: 45px;
-		color: #c9a461;
-		@include gameTitleFont(#2f2311);
-		width: 245px;
-		height: 150px;
-		margin: 0 auto;
-		text-align: center;
-		@include sprite('images/sprite.png', -5px, -193px, no-repeat, 800px);
-		.first{
-			font-size: 29px;
-			display: block;
-			margin-bottom: 16px;
-			padding-top: 34px;
-		}
-		.last{
-			top: 5px;
-			font-size: 20px;
-			left: 0px;
-		}
+	display: block;
+	text-align: center;
+
+	.first{
+		font-size: 5vw;
+		display: block;
+		margin-bottom: 16px;
+		padding-top: 34px;
+	}
+	.last{
+		top: 4vw;
+		font-size: 20px;
+		left: 0;
 	}
 }
+
+.scroll-tracker{
+	position: fixed;
+	top: 15vh;
+	right: -50px;
+	height: 5vh;
+	z-index: 40;
+  	transition: right .3s;
+  	font-family: '8-bit_limit_brkregular', sans-serif;
+
+  	&:hover{
+	  right: 40px;
+
+	  .hover-target{
+		background-color: rgba(0,0,0,0);
+		span{
+		  opacity: 0;
+		}
+	  }
+	}
+
+    *{
+        display: inline-block;
+        position:absolute;
+    }
+
+  	.hover-target{
+	  width: 76px;
+	  height: 70px;
+	  padding: 15px 0 0 7px;
+	  background-color: rgba(0,0,0,0.8);
+	  border-bottom-left-radius: 5px;
+	  border-top-left-radius: 5px;
+	  left: -80px;
+	  transition: background-color .3s;
+	  span{
+		color: white;
+		width: 15px;
+		word-wrap: break-word;
+		text-align: center;
+		opacity: 1;
+	  }
+	}
+
+	.current-position{
+		font-size: 10px;
+	  	color: white;
+	  	text-shadow: 0 0 3px black;
+		position: absolute;
+		margin-top: 2px;
+		right: -32px;
+	}
+
+    .ticks{
+        left: -19px;
+        height: 1290%;
+        width: 27px;
+        background: rgba(0,0,0,0.8);
+	 	//transparent border creates a larger hover target
+	  	border: 15px solid transparent;
+	  	background-clip: content-box;
+        border-radius: 3px;
+        top: -30%;
+    }
+
+	&>span{
+        width: 17px;
+        height: 18px;
+        @include sprite('images/nav-pips.png', 0px, 5px, no-repeat, auto);
+        cursor: pointer;
+        &:hover{
+          	@include sprite('images/nav-pips.png', -17px, 5px, no-repeat, auto);
+		  	label{
+			  opacity: 1;
+			}
+        }
+		label{
+			text-align: right;
+			position: absolute;
+			right: 25px;
+			top: -3px;
+		  	white-space: nowrap;
+		  	opacity: 0;
+		  	transition: opacity .5s;
+		  	@include gameTitleFont(rgba(255,255,255,0.8), 1px);
+		}
+	}
+ }
 
 section{
 	position: fixed;
@@ -171,7 +252,7 @@ section{
 	}
 	&#about{
 		z-index: 20;
-		padding-top: 160px;
+		padding-top: 17vh;
 		background: $backgroundColor;
 		box-shadow: 0 23px 45px -14px rgba(0,0,0,.75);
 		line-height: 29px;
@@ -198,17 +279,17 @@ section{
 	&#personal{
 		z-index: 19;
 		width: 4500px;
-		padding-left: 1400px;
+		padding-left: 1600px;
 		background: url("/images/boards.jpg") top left;
 		font-size: 19vh;
 		figure{
 			position: relative;
 			float: left;
 			top: 50%;
-			height: 80%;
+			height: 60%;
 			margin-right: 20px;
 			transform: translateY(-50%) rotate(1.5deg);
-			width: 2.5em;
+			width: 1.6em;
 			background-color: $backgroundColor;
 			background-image: url("/images/wedding.jpg");
 			background-size: cover;
@@ -255,6 +336,11 @@ section{
 			z-index: 21;
 			left: 50%;
 			transform: translateX(-50%);
+			image-rendering: optimizeSpeed;
+			image-rendering: -moz-crisp-edges;
+			image-rendering: -webkit-optimize-contrast;
+			image-rendering: optimize-contrast;
+			-ms-interpolation-mode: nearest-neighbor;
 		}
 		#cave{
 			position: absolute;
