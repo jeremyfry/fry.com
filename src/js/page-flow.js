@@ -43,7 +43,7 @@
 				title: "Finish"
 			},
 			textbox1: {
-				position: 3.2,
+				position: 3.3,
 				title: "Career: DMP"
 			},
 			textbox2: {

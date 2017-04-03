@@ -47,6 +47,15 @@ $zeldaFont: 'return_of_ganonregular';
     font-style: normal;
 }
 
+@font-face {
+	font-family: 'lady_radicalregular';
+	src: url('/fonts/lady_radical-webfont.woff2') format('woff2'),
+	url('/fonts/lady_radical-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video{
 	font: inherit;
 	font-size: 100%;
@@ -125,26 +134,52 @@ header{
 	font-family: $pixelFont;
 }
 
+.backgroundcliptext .name{
+	background-image: linear-gradient(173deg, #bfd255 27%,#8eb92a 45%,#72aa00 51%,#bfd255 64%,#bfd255 64%,#9ecb2d 82%,#9ecb2d 82%);
+};
+
 .name{
   	position: absolute;
 	font-size: 45px;
 	color: #c9a461;
-  	font-family: '8-bit_limit_brkregular', sans-serif;
-	@include gameTitleFont(#2f2311);
+  	font-family: 'lady_radicalregular', sans-serif;
 	width: 100%;
 	display: block;
 	text-align: center;
 
+	background: #bfd255;
+
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+	&.shadow{
+		@include gameTitleFont(#2f2311);
+	}
+
 	.first{
-		font-size: 5vw;
+		font-size: 11vw;
 		display: block;
 		margin-bottom: 16px;
 		padding-top: 34px;
 	}
 	.last{
-		top: 4vw;
-		font-size: 20px;
-		left: 0;
+		display: block;
+		margin-top: -7vw;
+		margin-left: 1vw;
+
+		&>span{
+			padding-left: 1.5vw;
+		}
+
+		.space{
+			display: inline-block;
+			padding-left: 2vw;
+		}
+
+		em{
+			font-size: 8vw;
+
+		}
 	}
 }
 
