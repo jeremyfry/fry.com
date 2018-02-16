@@ -313,37 +313,29 @@ section{
 	}
 	&#personal{
 		z-index: 19;
-		width: 4500px;
+		width: 4800px;
 		padding-left: 1600px;
 		background: url("/images/boards.jpg") top left;
 		font-size: 19vh;
 		figure{
 			position: relative;
-			float: left;
 			top: 50%;
-			height: 60%;
-			margin-right: 20px;
 			transform: translateY(-50%) rotate(1.5deg);
-			width: 1.6em;
-			background-color: $backgroundColor;
-			background-image: url("/images/wedding.jpg");
-			background-size: cover;
-			border: 8px solid black;
+			max-height: 80%;
+			margin-right: 20px;
+			display: inline-block;
+			width: auto;
 			&:nth-child(2){
 				transform: translateY(-50%) rotate(1.5deg);
-				background-image: url("/images/harley.jpg");
 			}
 			&:nth-child(3){
 				transform: translateY(-50%) rotate(-1.5deg);
-				background-image: url("/images/lacey.jpg");
 			}
 			&:nth-child(4){
 				transform: translateY(-50%) rotate(-1.5deg);
-				background-image: url("/images/laughter.jpg");
 			}
 			&:nth-child(5){
 				transform: translateY(-50%) rotate(-1.5deg);
-				background-image: url("/images/ninja.jpg");
 			}
 
 			figcaption{
